@@ -10,7 +10,7 @@ class NovoUsuario extends React.Component {
     this.state = {
       usuario: {
         nome: "",
-        genero: "m",
+        genero: "",
       },
 
       validacao: {
