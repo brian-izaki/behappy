@@ -45,6 +45,36 @@ class ImageScroller{
     )
   }
 
+  renderizarImagens(){
+    const ms = this.state.manipularEvento.toqueEmExecucao ? '100ms' : '800ms';
+
+    // suporte para diversos navegadores
+    const estilo = {
+      WebkitTransitionDuration: ms, // Safari e Chrome
+      MsTransitionDuration: ms, // IE
+      MozTransitionDuration: ms, // Firefox
+      OTransitionDuration: ms, // Opera
+      transitionDuration: ms, // Nativa do W3C
+
+      listStyleType: 'none',
+      margin: '0',
+      padding: '0',
+      position: 'relative',
+      width: `${this.props.elementos.length * 140}px`,
+      left: `${this.state.manipularEvento.left}px`
+    }
+
+    const lista = this.props.elementos.map(
+      (entry, index) => this.renderizarImagem(entry, index)
+    );
+
+    return (
+      <ul style={estilo}>
+        {lista}
+      </ul>
+    )
+  };
+
 } 
 
 export default ImageScroller;
