@@ -1,3 +1,8 @@
+// este é um componete que vai concentrar a maior parte da UI
+// Os métodos daqui podem refletir nos componentes filhos. 
+// Os estados do usuário tambem são armazenados aqui, sofrem alteração conforme um método daqui é evocado pelos filhos ou por ele msm
+// é utilizado um model para usuario (nele está contida uma validação de dados)
+
 import React from "react";
 
 import Usuario from '../../models/Usuario';
