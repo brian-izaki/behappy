@@ -9,6 +9,11 @@ class App extends React.Component{
       <div>
         <Header />
         <NovoUsuario 
+          onSubmit = {usuario => {
+            let genero = usuario.genero === 'm' ? 'o' : 'a';
+
+            this.refs.toast.sucesso(`Seja bem-vind${genero} ${usuario.nome}!`);
+          }}
           // é pego o id pela propriedade refs
           erro={msg=>this.refs.toast.erro(msg)}
         />

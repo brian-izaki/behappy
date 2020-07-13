@@ -11,7 +11,10 @@ import Label from "../Label";
 import Input from "../Input";
 import GenderSelector from "../GenderSelector";
 import Button from "../Button";
+import ImageScroller from '../ImageScroller';
+import Avatar from "../../models/Avatar";
 
+import avatarImg from "../Image/img/avatars.png";
 
 class NovoUsuario extends React.Component {
   constructor(props) {
@@ -41,6 +44,7 @@ class NovoUsuario extends React.Component {
     e.preventDefault();
     let usuario = this.state.usuario;
     usuario.genero = genero;
+    usuario.avatar = Avatar.obterTodos()[0];
     this.setState({
       usuario
     });
@@ -126,7 +130,10 @@ class NovoUsuario extends React.Component {
               texto = "Voltar"
               onClick = {e => {
                 e.preventDefault();
+                let usuario = this.state.usuario;
+                usuario.avatar = Avatar.obterTodos()[0];
                 this.setState({
+                  usuario,
                   primeiraVisaoCompleta: false,
                 })
               }}
@@ -134,6 +141,10 @@ class NovoUsuario extends React.Component {
           <Button 
               principal
               texto = "Salvar"
+              onClick = {e => {
+                e.preventDefault();
+                this.props.onSubmit(this.state.usuario);
+              }}
           />
         </section>
       )
@@ -148,12 +159,43 @@ class NovoUsuario extends React.Component {
     }
   }
 
+  renderizarAvatar(){
+    if (this.state.primeiraVisaoCompleta) {
+      return (
+        <section>
+          <Label 
+            texto="Escolha seu avatar:"
+          />
+          <ImageScroller 
+            arquivo={avatarImg}
+            eixoY = {(this.state.usuario.genero === 'm' ? 0 : 1)}
+
+            elementos = {Avatar.obterTodos()}
+            selecionados = {this.state.usuario.avatar}
+            onChange = {avatar => {
+
+              let usuario = this.state.usuario;
+              usuario.avatar = avatar;
+              this.setState({
+                usuario,
+              })
+
+            }}
+          />
+        </section>
+      )
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="center">
         <form className="pure-form pure-form-stacked">
           {this.renderizarNome()}
           {this.renderizarGenero()}
+          {this.renderizarAvatar()}
           {this.renderizarBotoes()}
         </form>
       </div>

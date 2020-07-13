@@ -85,7 +85,7 @@ class ImageScroller extends React.Component{
           marginLeft: '42px',
           backgroundColor: '#00C853',
           position: 'relative',
-          zInddex: '-2'
+          zIndex: '-3'
         }}
       ></span>
     )
@@ -106,7 +106,7 @@ class ImageScroller extends React.Component{
           let manipularEvento = this.state.manipularEvento;
           let index = manipularEvento.index;
 
-          if (posicao == 'esquerda'){
+          if (posicao === 'esquerda'){
             index += -1;
           } else {
             index += 1;
@@ -164,7 +164,7 @@ class ImageScroller extends React.Component{
       fontSize: '20px',
       textAlign: 'center',
       padding: '5px',
-      width: '380px',
+      width: '310px',
     }
 
     return (
