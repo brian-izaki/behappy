@@ -11,14 +11,22 @@ const idAnterior = identificador + '-' + (versao - 1);
 const urls = [
   '/',
   '/manifest.json',
-  '/logo192.png',
-  '/logo512.png',
+
+  '/icon-72x72.png',
+  '/icon-96x96.png',
+  '/icon-128x128.png',
+  '/icon-144x144.png',
+  '/icon-152x152.png',
+  '/icon-192x192.png',
+  '/icon-384x384.png',
+  '/icon-512x512.png',
+
   '/favicon.ico',
   'static/js/bundle.js',
   'static/js/0.chunk.js',
-  'static/js/1.chunk.js',
+  // 'static/js/1.chunk.js',
   'static/js/main.chunk.js',
-  'static/media/',
+  'static/media/avatars.4397a006.png',
 ];
 
 function ativarServiceWorker(){
